@@ -1,28 +1,25 @@
 #!/bin/bash
 
-# 企业微信 Webhook 地址（替换成你的）
-WEBHOOK_URL="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=994141b6-afe2-4009-bb63-8bfd0ba1b99f"
+WEBHOOK_URL="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=90977e98-2843-4836-b669-f28d6f2b72c6"
 
-# 轮值人员列表
-ROSTER=("张三" "李四" "王二麻")
+ROSTER=("付莹" "付昱" "刘文宾" "俞潇" "陈晗")
 
-# 获取当前日期
 TODAY=$(date +%Y-%m-%d)
-WEEKDAY=$(date +%u)  # 1-7 (1=周一, 7=周日)
+WEEKDAY=$(date +%u)
 
-# 计算当前年份的第一个周一作为基准日期
 YEAR=$(date +%Y)
-START_DATE=$(date -d "$YEAR-01-01 +$(( (8 - $(date -d "$YEAR-01-01" +%u)) % 7 )) days" +%Y-%m-%d)
+START_DATE=$(date -v1d -v"${YEAR}y" +%Y-%m-%d)
+START_WEEKDAY=$(date -j -f "%Y-%m-%d" "$START_DATE" +%u)
+DAYS_TO_FIRST_MONDAY=$(( (8 - START_WEEKDAY) % 7 ))
+START_DATE=$(date -j -v+"${DAYS_TO_FIRST_MONDAY}d" -f "%Y-%m-%d" "$START_DATE" +%Y-%m-%d)
 
-# 计算索引（确保轮值人员按照工作日循环）
 if [[ $WEEKDAY -le 5 ]]; then
-    DAY_DIFF=$(( ($(date -d "$TODAY" +%s) - $(date -d "$START_DATE" +%s)) / 86400 ))
+    DAY_DIFF=$(( ($(date -j -f "%Y-%m-%d" "$TODAY" +%s) - $(date -j -f "%Y-%m-%d" "$START_DATE" +%s)) / 86400 ))
     INDEX=$(( (DAY_DIFF / 5) % ${#ROSTER[@]} ))
 
     PERSON=${ROSTER[$INDEX]}
 
-    # 发送消息到企业微信
-    MESSAGE="{\"msgtype\": \"text\", \"text\": {\"content\": \"今日值日生：$PERSON\"}}"
+    MESSAGE="{\"msgtype\": \"text\", \"text\": {\"content\": \"今日站会ta说了算：$PERSON\"}}"
     curl -X POST -H "Content-Type: application/json" -d "$MESSAGE" "$WEBHOOK_URL"
 else
     echo "今天是周末，不发送通知"
