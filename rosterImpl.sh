@@ -11,9 +11,9 @@ next_index=$((next_index % ${#ROSTER[@]}))
 weekday=$(date +%u)
 if [[ $weekday -le 5 ]]; then
     person=${ROSTER[next_index]}
-    MESSAGE="{\"msgtype\": \"text\", \"text\": {\"content\": \"今日站会ta说了算：$person\"}}"
+    MESSAGE="{\"msgtype\": \"text\", \"text\": {\"content\": \"Congrats! standup host is：$person\"}}"
     curl -X POST -H "Content-Type: application/json" -d "$MESSAGE" "$WEBHOOK_URL"
-    $next_index > current_index.txt
+    echo $next_index > current_index.txt
 else
     echo "weekend off"
 fi
