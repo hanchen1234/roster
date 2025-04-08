@@ -8,13 +8,13 @@ TODAY=$(date +%Y-%m-%d)
 WEEKDAY=$(date +%u)
 
 YEAR=$(date +%Y)
-START_DATE=$(date -v1d -v"${YEAR}y" +%Y-%m-%d)
-START_WEEKDAY=$(date -j -f "%Y-%m-%d" "$START_DATE" +%u)
+START_DATE=$(date -d "$YEAR-01-01" +%Y-%m-%d)
+START_WEEKDAY=$(date -d "$START_DATE" +%u)
 DAYS_TO_FIRST_MONDAY=$(( (8 - START_WEEKDAY) % 7 ))
-START_DATE=$(date -j -v+"${DAYS_TO_FIRST_MONDAY}d" -f "%Y-%m-%d" "$START_DATE" +%Y-%m-%d)
+START_DATE=$(date -d "$START_DATE +$DAYS_TO_FIRST_MONDAY days" +%Y-%m-%d)
 
 if [[ $WEEKDAY -le 5 ]]; then
-    DAY_DIFF=$(( ($(date -j -f "%Y-%m-%d" "$TODAY" +%s) - $(date -j -f "%Y-%m-%d" "$START_DATE" +%s)) / 86400 ))
+    DAY_DIFF=$(( ($(date -d "$TODAY" +%s) - $(date -d "$START_DATE" +%s)) / 86400 ))
     INDEX=$(( (DAY_DIFF / 5) % ${#ROSTER[@]} ))
 
     PERSON=${ROSTER[$INDEX]}
