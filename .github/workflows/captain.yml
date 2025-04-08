@@ -22,5 +22,5 @@ jobs:
 
       - name: Run Roster Script
         run: |
-          chmod +x rosterImpl.sh
-          ./rosterImpl.sh
+          chmod +x standupImpl.sh
+          ./standupImpl.sh

@@ -4,7 +4,7 @@ WEBHOOK_URL="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=90977e98-2843-
 
 ROSTER=("Ying" "Kevin" "Wenbin" "Milovan" "Han" "Andrey" "Xiao" "Yu")
 
-index=$(cat current_index.txt)
+index=$(cat standup_index.txt)
 next_index=$((index + 1))
 next_index=$((next_index % ${#ROSTER[@]}))
 
@@ -13,7 +13,7 @@ if [[ $weekday -le 5 ]]; then
     person=${ROSTER[next_index]}
     MESSAGE="{\"msgtype\": \"text\", \"text\": {\"content\": \"Congrats! standup host is：$person\"}}"
     curl -X POST -H "Content-Type: application/json" -d "$MESSAGE" "$WEBHOOK_URL"
-    echo $next_index > current_index.txt
+    echo $next_index > standup_index.txt
 else
     echo "weekend off"
 fi
