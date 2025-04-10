@@ -2,7 +2,7 @@
 
 WEBHOOK_URL="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=90977e98-2843-4836-b669-f28d6f2b72c6"
 
-ROSTER=("Ying" "Kevin" "Wenbin" "Milovan" "Han" "Andrey" "Xiao" "Yu")
+ROSTER=("Ying" "Wenbin" "Han" "Xiao" "Yu")
 
 index=$(cat standup_index.txt)
 next_index=$((index + 1))
