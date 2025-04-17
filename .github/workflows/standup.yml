@@ -3,6 +3,7 @@ name: Daily Roster Notification
 on:
   schedule:
     - cron: '45 1 * * *'
+  workflow_dispatch:
 
 jobs:
   notify:
