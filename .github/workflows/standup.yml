@@ -8,6 +8,17 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Set Up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.x
+
+      - name: Install Dependencies
+        run: pip install requests
+
       - name: Run Roster Script
         run: |
           chmod +x standupImpl.sh
