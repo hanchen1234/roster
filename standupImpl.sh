@@ -2,7 +2,7 @@
 
 WEBHOOK_URL="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=90977e98-2843-4836-b669-f28d6f2b72c6"
 
-people=("俞潇" "付昱" "陈晗" "付莹" "刘文宾")
+people=("俞潇" "付昱" "陈晗" "付莹" "刘文宾" "韩家怡")
 
 start_date="2025-04-14"
 today=$(date +%Y-%m-%d)
