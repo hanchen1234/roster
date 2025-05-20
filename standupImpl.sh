@@ -29,4 +29,9 @@ done
 index=$((work_days % ${#people[@]}))
 person=${people[$index]}
 MESSAGE="{\"msgtype\": \"text\", \"text\": {\"content\": \"Congrats! standup host is：$person\"}}"
-curl -X POST -H "Content-Type: application/json" -d "$MESSAGE" "$WEBHOOK_URL"
+
+if [ "$(date +%w)" -eq 6 ] || [ "$(date +%w)" -eq 0 ]; then 
+  exit 0
+else
+  curl -X POST -H "Content-Type: application/json" -d "$MESSAGE" "$WEBHOOK_URL"
+fi
