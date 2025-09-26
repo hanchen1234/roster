@@ -28,7 +28,7 @@ done
 
 index=$((work_days % ${#people[@]}))
 person=${people[$index]}
-MESSAGE="{\"msgtype\": \"text\", \"text\": {\"content\": \"Congrats! standup host is：$person\"}}"
+MESSAGE="Congrats! standup host is：$person"
 
 if [ "$(date +%w)" -eq 6 ] || [ "$(date +%w)" -eq 0 ]; then 
   exit 0
