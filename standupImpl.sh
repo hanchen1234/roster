@@ -33,5 +33,5 @@ MESSAGE="Congrats! standup host is：$person"
 if [ "$(date +%w)" -eq 6 ] || [ "$(date +%w)" -eq 0 ]; then 
   exit 0
 else
-  curl -X POST -H "Content-Type: application/json" -d '{"text": $MESSAGE}' $WEBHOOK_URL
+  curl -X POST -H "Content-Type: application/json" -d "{"text": $MESSAGE}" "$WEBHOOK_URL"
 fi
