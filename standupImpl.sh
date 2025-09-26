@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WEBHOOK_URL="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=90977e98-2843-4836-b669-f28d6f2b72c6"
+WEBHOOK_URL="https://chat.googleapis.com/v1/spaces/AAQAUy5McwQ/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=FWnoX2-vLAPH9772Pkz5oZYuOGot14MkUTPjr5GyhIs"
 
 people=("刘佳颖" "陈晗" "付莹" "刘文宾" "韩家怡" "王钰")
 
