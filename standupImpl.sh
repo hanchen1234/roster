@@ -2,7 +2,7 @@
 
 WEBHOOK_URL="https://chat.googleapis.com/v1/spaces/AAQAUy5McwQ/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=FWnoX2-vLAPH9772Pkz5oZYuOGot14MkUTPjr5GyhIs"
 
-people=("刘佳颖" "陈晗" "付莹" "刘文宾" "韩家怡" "王钰")
+people=("刘佳颖" "陈晗" "付莹" "刘文宾" "王钰")
 
 start_date="2025-04-14"
 today=$(date +%Y-%m-%d)
